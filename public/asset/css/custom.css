@@ -1,0 +1,4 @@
+[uib-typeahead-popup].dropdown-menu{display:block;}
+.uib-time input{width:50px;}
+
+.loading{position:fixed;left:0;top:0;z-index:1000;background:url(../images/loading.gif) 50% 50% no-repeat rgba(255,255,255,.7);width:100%;height:100%;display:none}

@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head class="ng-scope">
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/app.css" rel="stylesheet" type="text/css" />
+<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>
+<style type="text/css">.uib-time input{width:50px;}</style>
+
+
+<meta charset="utf-8">
+<base href="/">
+<title ng-bind="seo.title || 'Gamota'" class="ng-binding">Quản lý tài khoản Võ Lâm Tranh bá</title>
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport">
+<meta name="google-site-verification" content="52baU9zj-r9oG1viYj745u-Tbf_XBQUl94_GInan_HQ">
+<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,700italic,500italic,400italic&amp;subset=latin,vietnamese" rel="stylesheet" type="text/css">
+<meta name="author" content="GAMOTA INC">
+<meta name="theme-color" content="#343c41"><meta property="og:site_name" content="Gamota">
+
+</head>
+<body ng-class="{'has-slide': hasSlide}" class="unknown-device" style="">
+<div id="fb-root" class=" fb_reset">
+<div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div>
+</div>
+</div>
+<div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+        
+        <div class="page" id="mainContainer" style="display: block;">
+        <!-- uiView:  --><ui-view name="header" class="ng-scope">
+        <div id="header" class="header ng-scope">
+    <div class="ng-view" autoscroll="true"></div>
+    <div class="container">
+        <div class="row">
+            <div id="logo"><a href="/"><img alt="Gamota" title="Gamota" src="images/logo.png"></a></div>
+            <!-- ngIf: logged --><div ng-if="logged" class="dropdown pull-right ng-scope" uib-dropdown="" style="">            
+                <a ng-href="#" id="drop_user" class="user dropdown-toggle" uib-dropdown-toggle="" data-delay="1000" data-close-others="false" role="buton" aria-haspopup="true" aria-expanded="false" href="#">
+                <span class="username ng-binding" ng-bind="username">Thang Ht</span>
+                <span><img ng-src="http://gamota.com/images/no-avatar.png" class="user-avata" src="http://gamota.com/images/no-avatar.png"></span>
+                </a>
+                <ul uib-dropdown-menu="" role="menu" aria-labelledby="split-button" class="dropdown-menu">
+                    <li><a ng-href="/user/profile" href="/user/profile"> <span class="username ng-binding">Thang Ht</span></a></li>
+                    <li><a ng-href="/user/profile" href="/user/profile"> <span><i class="ion-person"></i> Thông tin tài khoản  </span></a></li>
+                    <li><a ng-href="/user/profile?state=message" href="/user/profile?state=message"> <span><i class="fa fa-envelope"></i> Tin nhắn  </span><span class="badge ng-binding">  0</span></a></li>
+                    <li><a rel="nofollow" target="_blank" href="#"> <span><i class="fa fa-usd"></i> Nạp tiền  </span></a></li>
+                    <li class="divider"></li>
+                    <li><a ng-href="/" onclick="return false" ng-click="logout()" href="/"> <span> Thoát  </span></a></li>
+                </ul>
+            </div><!-- end ngIf: logged -->
+            <!-- ngIf: !logged -->
+            <div class="pull-right">
+                <div id="search-top">
+                    <!-- ngIf: search -->
+                    <div class="search-box top-search" ng-class="{active:search}">
+                        <form class="ng-pristine ng-valid">
+                            <!--<input ng-model="keyword" ng-change="search_link()" type="search" placeholder="Tìm kiếm...">
+                            <button type="submit" class="btn-search" ng-click="handleSearch()"><i class="fa fa-search"></i></button>-->
+                            <input ng-model="keyword" type="search" placeholder="Tìm kiếm..." class="ng-pristine ng-untouched ng-valid ng-empty">
+                            <button type="submit" class="btn-search" ng-click="handleSearch()"><i class="fa fa-search"></i></button>
+                            <span class="close">×</span>
+                        </form>
+                    </div>
+                    <div class="search-icon" ng-click="search = !search">
+                        <!-- ngIf: search -->
+                        <!-- ngIf: !search --><i ng-if="!search" class="fa fa-search ng-scope"> </i><!-- end ngIf: !search -->
+                    </div>
+                </div>
+            </div>
+            <div id="navigation">
+                <div class="navi-backdrop" style="display: none;"></div>
+                <div class="animated-arrow"><span></span></div>
+                <div class="navigation">
+                    <ul>
+                        <li class="nav-home"><a href="/">Trang chủ</a>
+                        </li>
+                        <li class="ng-scope"><a class="" href="#" style=""><i class="ion-ios-game-controller-b"></i> Trang chủ</a>
+                        
+                        </li>
+                    
+                        <li>
+                        <a ng-href="/giftcode" ng-class="{active:active('/giftcode')}" href="/giftcode"><i class="fa fa-gift"></i> Tải Game</a>
+                        </li>
+                        <li>
+                        <a ng-href="/giftcode" ng-class="{active:active('/giftcode')}" href="/giftcode"><i class="fa fa-gift"></i> Cộng đồng</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-download"></i> Giftcode</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></ui-view><!-- uiView:  --><ui-view name="laucher" class="ng-scope"><!-- GAMOTA launcher -->
+<!-- ngIf: vm.os != 'android' && vm.os!= 'ios' --><div class="fixed_launcher md-hidden hidden-sm ng-scope" ng-if="vm.os != 'android' &amp;&amp; vm.os!= 'ios'" ng-class="{'hidden': hiddenLauncher}">
+    
+    <div class="launcher_title">
+        <p class="launcher">Tải</p>
+        <p class="launcher">Game </p>
+        <p class="launcher">Ngay</p>
+    </div>
+    <div class="launcher_btn">
+        <a href="/launcher/install-guide" target="_blank" class="btn-launcher" ng-click="sendToGa($event, 'Download Launcher(Popup)')">Tải ngay</a>
+    </div>
+</div>
+ </ui-view>
+ <ui-view class="ng-scope"><!-- uiView:  --><ui-view class="ng-scope"><div class="content-wrapper ng-scope">
+    <div class="user_profile">
+        <div class="container">
+        <div class="">
+            <div class="sidebar col-md-3">
+                <div class="userpro_menu_tablist">
+                    <div class="userpro-box"><a ng-href="#" class="avatar" href="#"><img ng-src="http://gamota.com/images/no-avatar.png" alt="" src="http://gamota.com/images/no-avatar.png"></a><a href="#" class="username"><span class="ng-binding">Thang Ht</span></a><span class="ng-binding">UserID: 34499938</span></div>
+                    <div class="userpro-menu border">
+                        <ul>
+                            <li><a><i class="ion-person"></i>  Thông tin tài khoản</a><span class="iconlist"><i class="fa fa-angle-right"></i></span>
+                            </li>
+                            <li class="has-icon-new">
+                                <a>
+                                    <i class="ion-lock-combination"></i>Thay đổi thông tin</a>
+                                    <span class="iconlist"><i class="fa fa-angle-right"></i></span>
+                                 <ul class="submenu-area">
+                                        <li><a href="#">Đổi mật khẩu cấp 1</a></li>
+                                        <li class="active-sub"><a href="#">Đổi mật khẩu cấp 2</a></li>
+                                        <li><a href="#">Đổi Email tài khoản</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><i class="fa fa-usd"></i> Nạp tiền</a><span class="iconlist"><i class="fa fa-angle-right"></i></span>
+                            </li>
+                            
+                            
+                            <li class="has-icon-new">
+                                <a>
+                                <i class="fa fa-commenting"></i>Hệ thống hỗ trợ</a><span class="iconlist">
+                                <i class="fa fa-angle-right"></i></span>
+                                 <ul class="submenu-area">
+                                        <li class="active-sub"><a href="#">Gửi yêu cầu hỗ trợ</a></li>
+                                        <li><a href="#">Lịch sử</a></li>
+                                       
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- information account-->
+            <div class="content-main col-md-9"> 
+                <div class="grid-category green user_profile_main"> 
+                     <!-- start change mat khau -->
+                    <div class="active change-password">
+                        
+                        <div class="heading">
+                            <div class="title title_module"> <i class="fa fa-commenting"></i> Gửi yêu cầu hỗ trợ<span class="title-narrow"></span></div>
+                        </div>
+                        <div class="box-content">                           
+                           
+                            <div class="col-md-12">
+                                <form class="form-support"><br>
+                                     <div class="form-group">
+                                        <label for="gdc" class="col-sm-3 control-label">Bộ phận hỗ trợ <span class="red_star"> *</span></label>
+                                        <div class="col-sm-8">
+                                            <select name="singleSelect" id="singleSelect" ng-model="ticket.game_name" required="" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
+                                                <option value="">---Lựa chọn---</option>
+                                                <option value="">Hỗ trợ kỹ thuật Game</option>
+                                                <option value="">Hỗ trợ tài khoản - Tiền tệ</option>
+                                            </select>
+                                        </div>
+                                         </div>
+                                    <div class="form-group">
+                                       
+                                        <label for="gdc" class="col-sm-3 control-label">Chủ đề trợ giúp <span class="red_star"> *</span></label>
+                                        <div class="col-sm-8">
+                                            <select name="singleSelect" id="singleSelect" ng-model="ticket.topicId" required="" class="ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" style="">
+                                                <option value="">---Lựa chọn---</option> <!-- not selected / blank option -->
+                                                
+                                                <option ng-repeat="t in topics" value="12" class="ng-binding ng-scope" style="">Lỗi nạp thẻ</option>
+                                                <option ng-repeat="t in topics" value="21" class="ng-binding ng-scope">Lỗi thanh toán qua ATM</option><!-- end ngRepeat: t in topics -->
+                                                <option ng-repeat="t in topics" value="24" class="ng-binding ng-scope">Lỗi thanh toán bằng thẻ ATM / Ví điện tử</option><!-- end ngRepeat: t in topics --><option ng-repeat="t in topics" value="25" class="ng-binding ng-scope">Lỗi đăng nhập</option><!-- end ngRepeat: t in topics --><option ng-repeat="t in topics" value="26" class="ng-binding ng-scope">Lỗi event</option><!-- end ngRepeat: t in topics --><option ng-repeat="t in topics" value="27" class="ng-binding ng-scope">Lỗi tính năng trong game</option><!-- end ngRepeat: t in topics --><option ng-repeat="t in topics" value="28" class="ng-binding ng-scope">Lỗi mất đồ trong game</option><!-- end ngRepeat: t in topics --><option ng-repeat="t in topics" value="30" class="ng-binding ng-scope">Lỗi khác</option><!-- end ngRepeat: t in topics --> <!-- interpolation -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="tk" class="col-sm-3 control-label">Tên nhân vật <span class="red_star"> *</span></label>
+                                        <div class="col-sm-8">
+                                            <input id="tk" ng-model="ticket.character_name" type="text" placeholder="Nhập tên nhân vật" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tk" class="col-sm-3 control-label">Tên tài khoản <span class="red_star"> *</span></label>
+                                        <div class="col-sm-8">
+                                            <input id="tk" ng-model="ticket.character_name" type="text" placeholder="Nhập tên tài khoản" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="subject" class="col-sm-3 control-label">Tiêu đề yêu cầu <span class="red_star"> *</span></label>
+                                        <div class="col-sm-8">
+                                            <input id="tdyc" ng-model="ticket.subject" type="text" placeholder="Nhập tiêu đề" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="content" class="col-sm-3 control-label">Nội dung <span class="red_star"> *</span></label>
+                                        <div class="col-sm-8">
+                                            <textarea id="nd" ng-model="ticket.content" type="text" rows="6" cols="50" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" required=""></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-sm-8">
+                                            <button type="submit" ng-click="create(ticket)" class="btn btn-primary">Gửi phản hồi</button>
+                                            <button type="button" ng-click="reset()" class="btn btn-primary">Làm mới</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <br>
+                            
+                                <div class="notice">
+                                <a>Lưu ý</a>
+                                <ul>
+                                    <li><p><strong>Bộ phận Hỗ trợ kỹ thuật Game</strong>: Là bộ phân chuyên phụ trách xử lí các vấn đề lỗi tài khoản; nhân vật và các vấn đề ingame (Mất đồ; lỗi không đăng nhập được; lỗi hoạt động .v.v..)</p></li>
+                                    <li><p><strong>Bộ phận Hỗ trợ tài khoản - Tiền tệ</strong>: Là bộ phân chuyên phụ trách xử lí các vấn đề về thông tin tài khoản; thẻ nạp; thẻ ATM khi có vấn đề lỗi xảy ra.</p></li>
+                                     <li><p>Thời gian trả lời phản hồi: <strong>Từ 8h00 sáng tới 24h00 đêm</strong>.</p></li>
+                                </ul>
+                               </div>
+                               </div>
+                            </div>
+                            </div>
+                
+
+                        </div>
+                     
+                        <!-- end Thay đổi số điện thoại  -->
+                    
+                    </div>
+                    <!-- end change mat khau -->
+                </div>
+            </div>
+            <!-- end information account-->
+            </div>
+        </div><!-- container -->
+    </div>
+</div></ui-view></ui-view><!-- uiView:  --><ui-view name="footer" class="ng-scope"><div class="footer ng-scope">
+    <div class="container">
+        <div class="row">
+            <div class="block-hotline">
+                <div class="h-label">
+                    <div class="text">Hotline</div>
+                </div>
+                <div class="phone-number">
+                    <a href="tel:19006855" rel="nofollow"><h3>1900 6855</h3></a>
+                </div>
+            </div>
+            <div class="copyright text-center">Copyright 2016 by GAMOTA. Allright Reserved</div>
+        </div>
+    </div>
+</div></ui-view></div><!-- uiView:  --><ui-view name="chat" class="ng-scope"><div class="chat-box ng-scope" style="height: 40px; bottom: 0px;">
+    <a class="title_bar" ng-click="vm.change()">
+        <div class="icon-chat-box">
+            <img src="images/icon-chat-box.png" alt="">
+        </div>
+        <b>Chat với chúng tôi</b>
+        <span class="btn btn-close"><i class="icon-close"></i></span>
+    </a>
+    <div class="cx-content">
+        <div class="box-content">
+            <div id="chat-mess" class="tab_block">
+                <ul role="tablist" class="nav nav-tabs">
+                    <li role="presentation" ng-click="vm.check('facebook')" ng-class="{active: vm.isFBChat()}" class="active"><a href="">Gửi tin nhắn</a></li>
+                    <!-- ngIf: false -->
+                </ul>
+                <div class="tab-content no-padding">
+                    <div role="tabpanel" id="mess-1" class="tab-pane active" ng-class="{active: vm.isFBChat()}">
+                        <iframe id="chat-container" name="f1b9a834c" width="250px" height="300px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:page Facebook Social Plugin" style="border: none; visibility: visible; width: 250px; height: 30000px"></iframe>
+                    </div>
+                    <!-- ngIf: vm.chatInitialized && false -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</ui-view>
+</body>
+<script src="http://taikhoan.vltranhba.com/asset/js/jquery.min.js"></script>
+<script src="/shxt/web/themes/vltranhba/js/main.js"></script>
+</html>
